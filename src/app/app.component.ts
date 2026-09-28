@@ -23,7 +23,7 @@ import { site } from './data';
     <footer class="site-footer">
       <div class="footer-mark">conman.dev</div>
       <p>sample footer line — replace me with your own final word.</p>
-      <div class="footer-links"><a href="{{ site.goodreads }}" target="_blank" rel="noreferrer">goodreads</a><a href="{{ site.letterboxd }}" target="_blank" rel="noreferrer">letterboxd</a></div>
+      <div class="footer-links"><a [href]="site.goodreads" target="_blank" rel="noreferrer">goodreads</a><a [href]="site.letterboxd" target="_blank" rel="noreferrer">letterboxd</a></div>
     </footer>
   </div>`,
   styles: []
