@@ -422,3 +422,119 @@ section { scroll-margin-top: 92px; }
   .article-body blockquote { margin-left: 0; margin-right: 0; }
   .mock-shot { grid-template-columns: 1fr; }
 }
+
+/* Mode-change scene: a tiny sunrise/sunset instead of an instantaneous toggle. */
+.mode-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(232,224,208,.97), rgba(199,159,106,.9));
+}
+.mode-transition.active { animation: scene-fade 1.7s ease both; }
+.mode-transition.to-night { background: linear-gradient(180deg, rgba(28,24,33,.98), rgba(62,43,53,.94)); }
+.transition-sky { position: absolute; inset: auto 0 0; width: 100%; height: min(42vh, 360px); overflow: visible; color: var(--ink); }
+.mode-transition.to-night .transition-sky { color: var(--night-ink); }
+.transition-sun { fill: var(--accent-2); stroke: none; transform-origin: 116px 128px; animation: sun-roll 1.45s cubic-bezier(.2,.75,.3,1) both; }
+.mode-transition.to-night .transition-sun { animation-name: sun-set; }
+.transition-sun-rays { fill: none; stroke: var(--accent-2); stroke-width: 2; stroke-linecap: round; animation: rays-fade 1.35s ease both; }
+.mode-transition.to-night .transition-sun-rays { animation-name: rays-fade-out; }
+.transition-moon { fill: #c6b6dc; opacity: 0; transform-origin: 590px 86px; animation: moon-rise 1.5s ease both; }
+.transition-moon-cut { fill: currentColor; opacity: 0; animation: moon-cut 1.5s ease both; }
+.mode-transition:not(.to-night) .transition-moon,
+.mode-transition:not(.to-night) .transition-moon-cut { animation-name: moon-drop; }
+.transition-horizon { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; opacity: .7; stroke-dasharray: 13 16; animation: horizon-shiver 1.7s ease both; }
+.transition-road { fill: none; stroke: currentColor; stroke-width: 1.3; stroke-linecap: round; stroke-dasharray: 38 29; opacity: .33; }
+.tumble { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+.tumble-one { animation: tumble-cross 1.45s linear .02s both; }
+.tumble-two { animation: tumble-cross-two 1.65s linear .18s both; }
+.tumble-three { animation: tumble-cross-three 1.55s linear .1s both; }
+.transition-scratch { position: absolute; left: -5vw; width: 110vw; border-top: 1px dashed currentColor; opacity: .28; }
+.scratch-a { top: 68%; transform: rotate(-1.2deg); animation: scratch-drift 1.7s ease both; }
+.scratch-b { top: 78%; transform: rotate(.7deg); opacity: .18; animation: scratch-drift-two 1.7s ease both; }
+.transition-copy { position: absolute; left: 50%; bottom: 12%; transform: translateX(-50%) rotate(-1deg); font: 700 .64rem 'Courier Prime', monospace; letter-spacing: .16em; text-transform: uppercase; color: currentColor; opacity: .58; animation: copy-flicker 1.5s steps(5,end) both; }
+
+@keyframes scene-fade { 0% { opacity: 0; } 12% { opacity: 1; } 82% { opacity: .9; } 100% { opacity: 0; } }
+@keyframes sun-roll { 0% { opacity: 0; transform: translate(-260px,92px) rotate(-60deg); } 34% { opacity: 1; } 100% { opacity: 1; transform: translate(0,0) rotate(0deg); } }
+@keyframes sun-set { 0% { opacity: 1; transform: translate(0,0) rotate(0deg); } 100% { opacity: .05; transform: translate(300px,118px) rotate(65deg); } }
+@keyframes rays-fade { 0%,20% { opacity: 0; } 45%,100% { opacity: .85; } }
+@keyframes rays-fade-out { 0% { opacity: .8; } 100% { opacity: 0; } }
+@keyframes moon-rise { 0%,44% { opacity: 0; transform: translate(90px,80px); } 100% { opacity: .9; transform: translate(0,0); } }
+@keyframes moon-drop { 0% { opacity: .9; transform: translate(0,0); } 100% { opacity: 0; transform: translate(95px,-75px); } }
+@keyframes moon-cut { 0%,44% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes horizon-shiver { 0% { transform: translateX(-28px) scaleX(.98); } 45% { transform: translateX(10px); } 100% { transform: translateX(0); } }
+@keyframes tumble-cross { 0% { opacity: 0; transform: translate(-80px,80px) rotate(0); } 12% { opacity: .72; } 100% { opacity: .72; transform: translate(800px,-35px) rotate(560deg); } }
+@keyframes tumble-cross-two { 0% { opacity: 0; transform: translate(820px,34px) rotate(0) scale(.7); } 18% { opacity: .58; } 100% { opacity: .58; transform: translate(-240px,-10px) rotate(-430deg) scale(.7); } }
+@keyframes tumble-cross-three { 0% { opacity: 0; transform: translate(-110px,125px) rotate(0); } 20% { opacity: .45; } 100% { opacity: .45; transform: translate(900px,38px) rotate(690deg); } }
+@keyframes scratch-drift { 0% { transform: translateX(-10vw) rotate(-1.8deg); } 100% { transform: translateX(0) rotate(-1.2deg); } }
+@keyframes scratch-drift-two { 0% { transform: translateX(8vw) rotate(1.1deg); } 100% { transform: translateX(0) rotate(.7deg); } }
+@keyframes copy-flicker { 0%,12% { opacity: 0; } 25% { opacity: .8; } 31% { opacity: .25; } 36% { opacity: .7; } 100% { opacity: .58; } }
+
+/* Desktop marginalia: deliberately imperfect little desert observations. */
+.hero { isolation: isolate; }
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 135px;
+  height: 190px;
+  opacity: .58;
+}
+.hero::before {
+  left: .8vw;
+  top: 28%;
+  background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 135 190'%3E%3Cg fill='none' stroke='%23181512' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M67 174V65m0 41c-14-10-22-21-19-39m19 56c13-11 22-23 20-42m-21 75c-8-8-19-8-30-2m31 8c10-7 20-5 28 1' stroke-width='3'/%3E%3Cpath d='M66 65c-5-10-2-19 6-26m-6 51c-7-8-15-10-24-6M87 91c7-8 14-10 22-7M43 135c-8-4-14-2-20 4' stroke-width='1.7'/%3E%3Cpath d='M20 174q20-11 45-4t49-2' stroke-width='1.2' stroke-dasharray='4 7'/%3E%3C/g%3E%3C/svg%3E");
+  transform: rotate(-3deg);
+}
+.hero::after {
+  right: -.2vw;
+  bottom: 5%;
+  width: 175px;
+  height: 235px;
+  background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 175 235'%3E%3Cg fill='none' stroke='%23181512' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 205h166' stroke-width='1.5'/%3E%3Cpath d='M18 204l17-67 20 29 25-80 21 52 23-38 31 104' stroke-width='2.7'/%3E%3Cpath d='M33 190l12-28m18 28l16-55m12 55l15-31m11 31l14-65m13 65l12-44' stroke-width='1.3'/%3E%3Cpath d='M126 170c16-9 20-18 16-26m0 0l-6-2m6 2l4-6m-5 22c8 8 18 9 26 4m-26-4l-8 7m-25-26c-7-6-16-4-22 2m22-2l5 6' stroke-width='2'/%3E%3Cpath d='M125 146c-4-5-9-5-14-2m24 7c6-3 11-1 15 4' stroke-width='1.2'/%3E%3C/g%3E%3C/svg%3E");
+  transform: rotate(2deg);
+}
+.night-mode .hero::before,
+.night-mode .hero::after { filter: invert(.88); opacity: .42; }
+
+@media (max-width: 920px) {
+  .hero::before,
+  .hero::after { display: none; }
+  .topbar { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; padding: 0 4vw; }
+  .nav { justify-content: flex-start; gap: 18px; }
+  .nav a { font-size: .69rem; }
+}
+
+@media (max-width: 720px) {
+  .topbar { min-height: 64px; }
+  .wordmark { font-size: .92rem; }
+  .mode-switch { padding: 7px 8px; }
+  .mode-switch span:last-child { display: none; }
+  .hero { min-height: auto; grid-template-columns: 1fr; gap: 28px; padding: 7vh 7vw 10vh; }
+  .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
+  .hero-art { margin: 0 -2vw; }
+  .hero-caption { position: static; margin-top: -5px; }
+  .section-heading { grid-template-columns: 28px 1fr; gap: 10px; padding: 0 7vw 20px; }
+  .section-heading p { grid-column: 2; }
+  .about-grid, .project-grid { grid-template-columns: 1fr; padding: 0 7vw; }
+  .feature-card.offset, .feature-card:nth-child(1), .feature-card:nth-child(3), .project-card:nth-child(2), .project-card:nth-child(3) { transform: none; }
+  .writing-list { padding: 0 7vw; }
+  .writing-row { grid-template-columns: 1fr auto; gap: 9px 15px; }
+  .writing-meta { grid-column: 1 / -1; flex-direction: row; gap: 10px; }
+  .writing-length { align-self: end; }
+  .contact-panel { margin: 9vh 7vw 0; padding: 5vh 6vw; grid-template-columns: 1fr; gap: 28px; }
+  .quote, .site-footer { margin-left: 7vw; margin-right: 7vw; }
+  .site-footer { padding-left: 0; padding-right: 0; }
+  .mode-transition { display: block; }
+  .transition-copy { bottom: 8%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .mode-transition.active,
+  .mode-transition * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}
