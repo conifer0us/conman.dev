@@ -28,6 +28,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styles: []
 })
 export class AppComponent {
-  nightMode = signal(false);
+  nightMode = signal(this.isNightByClock());
   toggleMode(): void { this.nightMode.update(v => !v); }
+  private isNightByClock(): boolean { const hour = new Date().getHours(); return hour < 7 || hour >= 19; }
 }
