@@ -28,7 +28,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styles: []
 })
 export class AppComponent {
-  nightMode = signal(this.isNightByClock());
-  toggleMode(): void { this.nightMode.update(v => !v); }
+  nightMode = signal(this.readMode());
+  toggleMode(): void { const next = !this.nightMode(); this.nightMode.set(next); localStorage.setItem('conman-mode', next ? 'night' : 'day'); }
+  private readMode(): boolean { if (typeof localStorage !== 'undefined') { const saved = localStorage.getItem('conman-mode'); if (saved === 'night') return true; if (saved === 'day') return false; } return this.isNightByClock(); }
   private isNightByClock(): boolean { const hour = new Date().getHours(); return hour < 7 || hour >= 19; }
 }

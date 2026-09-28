@@ -1,11 +1,28 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { writing, Writing } from '../data';
 
-@Component({selector:'app-writing-detail',standalone:true,imports:[CommonModule,RouterLink],template:`
-<section class="detail-page writing-detail">
-  <a class="back-link" routerLink="/">← back to the road</a>
-  <div class="detail-hero"><p class="kicker">WRITING / {{ slug }}</p><h1>{{ title }}</h1><p class="detail-lede">Sample intro copy. This page is intentionally spacious so your real work can breathe.</p></div>
-  <article class="article-body"><p>Replace this with your story or essay. The page is set up for long-form reading: comfortable measure, deliberate spacing, and a little visual noise around the edges.</p><p>Another paragraph goes here. Write normally, then let the layout do some of the work.</p><blockquote>“Put your favorite line from the piece here.”</blockquote><p>More writing here. You can later extend this with markdown, a CMS, or content files without changing the visual language.</p></article>
-</section>`,styles:[]})
-export class WritingDetailComponent { slug='story'; title='Writing title'; constructor(route: ActivatedRoute){ const s=route.snapshot.paramMap.get('slug') || 'story'; this.slug=s; this.title=s.split('-').map(x=>x[0].toUpperCase()+x.slice(1)).join(' '); } }
+@Component({
+  selector:'app-writing-detail', standalone:true, imports:[CommonModule,RouterLink],
+  template:`
+  <section class="detail-page" *ngIf="post as p">
+    <a class="back-link" routerLink="/">← back to the road</a>
+    <div class="detail-hero writing-hero"><p class="kicker">{{ p.kind | uppercase }} / {{ p.date }}</p><h1>{{ p.title }}</h1><p class="detail-lede">{{ p.excerpt }}</p></div>
+    <article class="article-body">
+      <ng-container *ngFor="let paragraph of p.body; let i = index">
+        <p>{{ paragraph }}</p>
+        <blockquote *ngIf="i === 1 && p.pullQuote">“{{ p.pullQuote }}”</blockquote>
+      </ng-container>
+    </article>
+  </section>
+  <section class="detail-page empty-state" *ngIf="!post"><a class="back-link" routerLink="/">← back to the road</a><h1>Nothing written here.</h1><p>That piece does not exist yet.</p></section>`,
+  styles:[]
+})
+export class WritingDetailComponent {
+  post?: Writing;
+  constructor(route: ActivatedRoute) {
+    const slug = route.snapshot.paramMap.get('slug');
+    this.post = writing.find(p => p.slug === slug);
+  }
+}
