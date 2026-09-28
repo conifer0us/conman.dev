@@ -1,23 +1,30 @@
 # conman.dev
 
-A personal portfolio / writing site built with Angular. The visual direction is a desert day-to-night cycle: paper, graphite, worn road signage, sparse Las Vegas cues, and hand-drawn SVG marks.
+Personal portfolio, project archive, and writing site for conman.dev.
 
-## Design intent
+## Design direction
 
-The site deliberately avoids a generic portfolio grid. The homepage behaves like a landscape: a strong editorial hero, irregular information cards, project cards that feel like found objects, and writing rows that lead into generous reading pages. The artwork is original inline SVG with pencil/ink-like geometry rather than stock imagery.
+A restrained desert-road visual system: paper, graphite, faded signage, imperfect geometry, and small hand-drawn SVG marks. The day/night toggle is tied to the local clock by default and can be overridden by the visitor; the preference persists in local storage.
 
-## Editing your copy
+The visual language borrows broad editorial and countercultural cues from desert road ephemera, sketchbooks, old Vegas signage, and expressive ink-on-paper artwork without copying any single artist's work.
 
-Start with `src/app/pages/home.component.html` for the homepage copy and `src/app/pages/home.component.ts` for project and writing metadata. Detail-page sample text lives in `src/app/pages/project-detail.component.ts` and `src/app/pages/writing-detail.component.ts`.
+## Customize your copy
+
+The main content is in `src/app/data.ts`.
+
+- `projects` controls project cards and project-detail pages.
+- `writing` controls writing cards and long-form article pages.
+- `src/app/pages/home.component.html` contains your intro, accomplishments, competencies, interests, and contact copy.
+- Replace the sample social/contact URLs in `src/app/pages/home.component.html` and `src/app/app.component.ts`.
 
 ## Run locally
-
-Requires Node compatible with Angular 21. Angular 21 is used here because it is an actively supported LTS line and works with the current Node 22 toolchain available during scaffolding.
 
 ```bash
 npm install
 npm start
 ```
+
+Then open `http://localhost:4200/`.
 
 ## Build
 
@@ -27,4 +34,9 @@ npm run build
 
 ## GitHub
 
-The workspace is initialized as a Git repository with an initial commit. The GitHub connector was unavailable in the build environment, so the remote repository still needs to be connected/pushed.
+The repository is already initialized with Git and has local commits. Add your GitHub remote and push `main` when repository access is available.
+
+```bash
+git remote add origin git@github.com:YOUR-USERNAME/conman.dev.git
+git push -u origin main
+```
