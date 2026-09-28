@@ -11,6 +11,7 @@ export type Project = {
   problem: string;
   approach: string;
   outcome: string;
+  screenshots: { src?: string; alt: string; caption: string }[];
 };
 
 export type Writing = {
@@ -24,42 +25,68 @@ export type Writing = {
   pullQuote?: string;
 };
 
+export const site = {
+  name: 'Your Name Here',
+  email: 'hello@conman.dev',
+  github: 'https://github.com/yourusername',
+  linkedin: 'https://www.linkedin.com/in/yourusername/',
+  goodreads: 'https://www.goodreads.com/',
+  letterboxd: 'https://letterboxd.com/',
+  quote: 'insert your tiny final line here.'
+};
+
 export const projects: Project[] = [
   {
-    slug: 'signal-drift',
-    title: 'Signal Drift', year: '2026', type: 'software / product',
+    slug: 'signal-drift', title: 'Signal Drift', year: '2026', type: 'software / product',
     summary: 'A speculative interface for finding calm in noisy systems — the place where a dashboard stops shouting and starts helping.',
     glyph: 'signal', tech: ['Angular', 'TypeScript', 'D3'], status: 'prototype', role: 'design + engineering',
     problem: 'Sample: people had too many metrics and not enough attention. The real question was which signals deserved a second look.',
     approach: 'Sample: reduced the interface to a few strong visual anchors, then added interactions only where they clarified change over time.',
-    outcome: 'Sample: a tighter prototype that made the right anomalies easier to notice without turning the screen into a control room.'
+    outcome: 'Sample: a tighter prototype that made the right anomalies easier to notice without turning the screen into a control room.',
+    screenshots: [
+      { alt: 'Signal Drift dashboard screenshot placeholder', caption: 'replace with your primary product screenshot' },
+      { alt: 'Signal Drift interaction screenshot placeholder', caption: 'show a notable interaction or state' },
+      { alt: 'Signal Drift process screenshot placeholder', caption: 'show process, architecture, or before / after' }
+    ]
   },
   {
-    slug: 'midnight-index',
-    title: 'Midnight Index', year: '2025', type: 'web / data',
+    slug: 'midnight-index', title: 'Midnight Index', year: '2025', type: 'web / data',
     summary: 'A tiny archive engine for odd little datasets, built to make overlooked patterns feel strangely important.',
     glyph: 'index', tech: ['Node', 'SQLite', 'CSS'], status: 'shipped', role: 'solo developer',
     problem: 'Sample: a collection of small datasets was technically searchable but emotionally unreadable.',
     approach: 'Sample: built a lightweight index, then used typographic rhythm and hand-drawn labels to turn browsing into discovery.',
-    outcome: 'Sample: a working archive with fast search and a more memorable browsing experience.'
+    outcome: 'Sample: a working archive with fast search and a more memorable browsing experience.',
+    screenshots: [
+      { alt: 'Midnight Index search screenshot placeholder', caption: 'replace with the primary archive view' },
+      { alt: 'Midnight Index result screenshot placeholder', caption: 'show an interesting result state' },
+      { alt: 'Midnight Index data model screenshot placeholder', caption: 'show the technical side of the project' }
+    ]
   },
   {
-    slug: 'desert-radio',
-    title: 'Desert Radio', year: '2025', type: 'creative code',
+    slug: 'desert-radio', title: 'Desert Radio', year: '2025', type: 'creative code',
     summary: 'An interactive radio dial that turns a playlist into a map of fictional road stops, weather, and neon signs.',
     glyph: 'radio', tech: ['Web Audio', 'Canvas', 'Angular'], status: 'experiment', role: 'creative developer',
     problem: 'Sample: playlists are usually linear. I wanted one that felt like wandering.',
     approach: 'Sample: treated audio as geography and built a dial that changes its landscape, labels, and atmosphere as the listener moves.',
-    outcome: 'Sample: a small creative experiment where interaction becomes part of the music rather than a control layered on top.'
+    outcome: 'Sample: a small creative experiment where interaction becomes part of the music rather than a control layered on top.',
+    screenshots: [
+      { alt: 'Desert Radio dial screenshot placeholder', caption: 'replace with the main experience' },
+      { alt: 'Desert Radio map screenshot placeholder', caption: 'show the fictional route or map layer' },
+      { alt: 'Desert Radio visual state placeholder', caption: 'show a particularly strange or beautiful state' }
+    ]
   },
   {
-    slug: 'ledger-burn',
-    title: 'Ledger Burn', year: '2024', type: 'tooling / automation',
+    slug: 'ledger-burn', title: 'Ledger Burn', year: '2024', type: 'tooling / automation',
     summary: 'A small workflow tool that trims repetitive admin from student teams and leaves the useful parts behind.',
     glyph: 'ledger', tech: ['Python', 'CLI', 'GitHub'], status: 'in use', role: 'developer + maintainer',
     problem: 'Sample: student teams kept doing the same cleanup and reporting by hand every week.',
     approach: 'Sample: automated the repetitive steps and left explicit checkpoints where human judgment was actually useful.',
-    outcome: 'Sample: fewer mechanical tasks, clearer handoffs, and a tool small enough to understand and maintain.'
+    outcome: 'Sample: fewer mechanical tasks, clearer handoffs, and a tool small enough to understand and maintain.',
+    screenshots: [
+      { alt: 'Ledger Burn command line screenshot placeholder', caption: 'replace with the CLI in action' },
+      { alt: 'Ledger Burn workflow screenshot placeholder', caption: 'show the workflow before / after' },
+      { alt: 'Ledger Burn repository screenshot placeholder', caption: 'show tests, docs, or implementation details' }
+    ]
   }
 ];
 

@@ -40,9 +40,14 @@ import { projects, Project } from '../data';
 
     <div class="screenshot-strip">
       <div class="screenshot-caption"><span>001</span> SCREENSHOTS / PROCESS / RECEIPTS</div>
-      <div class="mock-shot" *ngFor="let n of [1,2,3]">
-        <div class="mock-ui"><div class="mock-bar"></div><div class="mock-block"></div><div class="mock-block short"></div><div class="mock-chart"></div></div>
-        <span>drop screenshot {{ n }} here</span>
+      <div class="mock-shot" *ngFor="let shot of p.screenshots; let n = index">
+        <ng-container *ngIf="shot.src; else screenshotPlaceholder">
+          <figure class="real-shot"><img [src]="shot.src" [alt]="shot.alt" loading="lazy"><figcaption>{{ shot.caption }}</figcaption></figure>
+        </ng-container>
+        <ng-template #screenshotPlaceholder>
+          <div class="mock-ui" aria-hidden="true"><div class="mock-bar"></div><div class="mock-block"></div><div class="mock-block short"></div><div class="mock-chart"></div></div>
+        </ng-template>
+        <span>{{ shot.caption || ('drop screenshot ' + (n + 1) + ' here') }}</span>
       </div>
     </div>
   </section>
