@@ -1,0 +1,70 @@
+<section class="hero">
+  <div class="hero-copy">
+    <p class="kicker">PERSONAL SITE / PORTFOLIO / SCRAPBOOK</p>
+    <h1>Hi. I'm <em>your name here.</em></h1>
+    <p class="hero-bio">Sample bio: software builder, curious generalist, and person with too many tabs open. I make useful things, write about strange ones, and keep a running list of questions worth chasing.</p>
+    <div class="hero-actions"><a class="button-primary" href="#work">see the work <span>↘</span></a><a class="text-link" href="#writing">read the writing</a></div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 620 430" role="img">
+      <path class="sketch" d="M55 347 C 118 316, 170 328, 230 342 S 365 373, 435 344 S 526 317, 582 330"/>
+      <path class="sketch thin" d="M36 366 C 136 349, 213 371, 309 362 S 487 343, 596 360"/>
+      <circle class="sun" cx="452" cy="125" r="61"/>
+      <circle class="sun-inner" cx="452" cy="125" r="52"/>
+      <path class="mountain" d="M60 332 L177 198 L239 281 L304 225 L424 334 Z"/>
+      <path class="mountain back" d="M286 333 L356 247 L398 291 L490 176 L586 329 Z"/>
+      <path class="utility" d="M82 251 C 122 235, 173 236, 204 246"/>
+      <path class="utility" d="M82 257 C 126 242, 173 243, 204 252"/>
+      <path class="utility" d="M101 257 L101 319 M186 251 L186 315"/>
+      <path class="signpole" d="M500 190 L500 335"/>
+      <path class="sign" d="M453 208 Q 502 190 548 205 L541 265 Q 500 251 459 261 Z"/>
+      <text x="470" y="238" class="sign-text">LAS / VEGAS</text>
+      <path class="road" d="M0 408 Q 198 356 320 374 T 620 365"/>
+      <path class="road-line" d="M90 391 L141 385 M184 379 L225 377 M284 373 L319 374 M377 370 L407 370"/>
+      <g class="scribble"><path d="M545 61 l18 -16 M555 72 l22 -3 M541 84 l10 19"/></g>
+    </svg>
+    <div class="hero-caption">somewhere between <span>the work</span> and <span>the road</span></div>
+  </div>
+</section>
+
+<section class="cards-section" id="about">
+  <div class="section-heading"><span>01</span><h2>the short version</h2><p>Keep these cards crisp. Write the real copy later.</p></div>
+  <div class="about-grid">
+    <article class="feature-card"><div class="card-index">A</div><h3>accomplishments</h3><p>Sample: shipped projects, awards, launches, research, internships, or anything that deserves a little more daylight.</p><div class="mini-line"></div><span>put the proof here →</span></article>
+    <article class="feature-card offset"><div class="card-index">B</div><h3>professional competencies</h3><p>Sample: TypeScript, systems thinking, technical writing, product sense, debugging, collaboration, leadership.</p><div class="skill-cloud"><span>build</span><span>debug</span><span>write</span><span>ship</span><span>listen</span></div></article>
+    <article class="feature-card"><div class="card-index">C</div><h3>personal interests</h3><p>Sample: novels, weird cinema, desert maps, long walks, tiny tools, bad coffee, good typography.</p><div class="interest-line">books / films / places / questions</div></article>
+  </div>
+</section>
+
+<section class="work-section" id="work">
+  <div class="section-heading"><span>02</span><h2>selected work</h2><p>Projects get the full-page treatment. Click into the mess.</p></div>
+  <div class="project-grid">
+    <a class="project-card" *ngFor="let project of projects; let i = index" [routerLink]="['/projects', project.slug]">
+      <div class="project-top"><span>{{ project.year }}</span><span>{{ project.type }}</span></div>
+      <div class="project-art" [attr.data-glyph]="project.glyph">
+        <svg *ngIf="project.glyph === 'signal'" viewBox="0 0 320 190"><path d="M36 151 C 94 113 126 105 171 131 S 251 161 286 100" class="sketch"/><path d="M49 123 Q92 83 131 108 Q169 128 220 82 Q252 55 284 70" class="sketch thin"/><circle cx="132" cy="108" r="7" class="dot"/><circle cx="220" cy="82" r="5" class="dot"/></svg>
+        <svg *ngIf="project.glyph === 'index'" viewBox="0 0 320 190"><path d="M52 37 L252 37 L252 153 L52 153 Z" class="outline"/><path d="M71 68 H221 M71 95 H189 M71 122 H215" class="sketch thin"/><path d="M240 24 l18 18 -25 12" class="scribble-line"/></svg>
+        <svg *ngIf="project.glyph === 'radio'" viewBox="0 0 320 190"><circle cx="145" cy="95" r="58" class="outline"/><circle cx="145" cy="95" r="34" class="outline"/><path d="M145 95 L184 72" class="sketch"/><path d="M213 60 Q264 94 216 136" class="sketch thin"/><path d="M226 49 Q298 95 227 148" class="sketch thin"/><circle cx="145" cy="95" r="6" class="dot"/></svg>
+        <svg *ngIf="project.glyph === 'ledger'" viewBox="0 0 320 190"><path d="M63 51 C113 32 166 37 215 54 L215 148 C166 130 113 132 63 149 Z" class="outline"/><path d="M63 51 L63 149 M215 54 L249 41 L249 135 L215 148" class="sketch"/><path d="M92 77 H182 M92 101 H169 M92 125 H191" class="sketch thin"/></svg>
+      </div>
+      <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.summary }}</p><div class="tags"><span *ngFor="let tech of project.tech">{{ tech }}</span></div></div><span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="writing-section" id="writing">
+  <div class="section-heading"><span>03</span><h2>notes from the road</h2><p>Writing lives here. The site should feel as comfortable reading as browsing.</p></div>
+  <div class="writing-list">
+    <a class="writing-row" *ngFor="let post of writing" [routerLink]="['/writing', post.slug]">
+      <div class="writing-meta"><span>{{ post.date }}</span><span>{{ post.kind }}</span></div><div class="writing-title"><h3>{{ post.title }}</h3><p>{{ post.excerpt }}</p></div><div class="writing-length">{{ post.length }} <span>↗</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-panel">
+    <div><span class="kicker">04 / CONTACT</span><h2>Let's make something<br><em>worth looking at.</em></h2></div>
+    <div class="contact-copy"><p>Sample: email me at <strong>hello@conman.dev</strong>. Or replace this with whatever contact route you actually want employers and collaborators to use.</p><div class="contact-links"><a href="mailto:hello@conman.dev">email ↗</a><a href="https://github.com/" target="_blank" rel="noreferrer">github ↗</a><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">linkedin ↗</a></div></div>
+  </div>
+  <div class="quote">“insert your tiny final line here.”</div>
+</section>
