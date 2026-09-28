@@ -1,0 +1,51 @@
+<section class="detail-page" *ngIf="project as p; else missingProject">
+  <a class="back-link" routerLink="/">← back to the road</a>
+
+  <div class="detail-hero">
+    <p class="kicker">PROJECT / {{ p.year }} / {{ p.status }}</p>
+    <h1>{{ p.title }}</h1>
+    <p class="detail-lede">{{ p.summary }}</p>
+    <div class="detail-meta-row"><span>{{ p.role }}</span><span>·</span><span>{{ p.type }}</span></div>
+  </div>
+
+  <div class="detail-layout">
+    <div class="detail-art project-detail-art">
+      <img [src]="p.art" [alt]="p.title + ' illustration'">
+    </div>
+
+    <div class="detail-copy">
+      <div class="detail-copy-block" *ngFor="let section of p.sections">
+        <h2>{{ section.heading }}</h2>
+        <p>{{ section.body }}</p>
+      </div>
+      <div class="detail-tags"><span *ngFor="let tech of p.tech">{{ tech }}</span></div>
+    </div>
+  </div>
+
+  <div class="screenshot-strip">
+    <div class="mock-shot" *ngFor="let shot of p.screenshots">
+      <ng-container *ngIf="shot.src; else screenshotFallback">
+        <figure class="real-shot">
+          <img [src]="shot.src" [alt]="shot.alt" loading="lazy">
+          <figcaption>{{ shot.caption }}</figcaption>
+        </figure>
+      </ng-container>
+      <ng-template #screenshotFallback>
+        <div class="mock-ui" aria-hidden="true">
+          <div class="mock-bar"></div>
+          <div class="mock-block"></div>
+          <div class="mock-block short"></div>
+          <div class="mock-chart"></div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>
+
+<ng-template #missingProject>
+  <section class="detail-page empty-state">
+    <a class="back-link" routerLink="/">← back to the road</a>
+    <h1>Nothing parked here.</h1>
+    <p>That project does not exist.</p>
+  </section>
+</ng-template>

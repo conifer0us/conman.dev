@@ -1,11 +1,6 @@
-# Site assets
+# Assets
 
-Put project screenshots and other static media here.
+- `illustrations/` — site SVGs and project card art
+- `projects/` — project screenshots
 
-Recommended pattern:
-- `project-slug-01.webp`
-- `project-slug-02.webp`
-- `project-slug-03.webp`
-
-Then set the matching `src` value in `src/app/data.ts`, for example:
-`src: 'assets/project-slug-01.webp'`
+Match paths from `src/app/data.ts`.

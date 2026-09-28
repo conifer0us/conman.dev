@@ -1,0 +1,24 @@
+<section class="detail-page" *ngIf="post as p; else missingPost">
+  <a class="back-link" routerLink="/">← back to the road</a>
+
+  <div class="detail-hero writing-hero">
+    <p class="kicker">{{ p.kind | uppercase }} / {{ p.date }}</p>
+    <h1>{{ p.title }}</h1>
+    <p class="detail-lede">{{ p.excerpt }}</p>
+  </div>
+
+  <article class="article-body">
+    <ng-container *ngFor="let paragraph of p.body; let i = index">
+      <p>{{ paragraph }}</p>
+      <blockquote *ngIf="i === 1 && p.pullQuote">“{{ p.pullQuote }}”</blockquote>
+    </ng-container>
+  </article>
+</section>
+
+<ng-template #missingPost>
+  <section class="detail-page empty-state">
+    <a class="back-link" routerLink="/">← back to the road</a>
+    <h1>Nothing written here.</h1>
+    <p>That piece does not exist.</p>
+  </section>
+</ng-template>

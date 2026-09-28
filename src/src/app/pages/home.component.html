@@ -1,0 +1,49 @@
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <h1>Hi. I'm <em>{{ site.name }}.</em></h1>
+    <p class="hero-bio">Software builder, curious generalist, and person with too many tabs open. I make useful things, write about strange ones, and keep a running list of questions worth chasing.</p>
+    <div class="hero-actions"><a class="button-primary" href="#work">see the work <span>↘</span></a><a class="text-link" href="#writing">read the writing</a></div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="vegas-sign-wrap">
+      <img src="assets/illustrations/welcome-sign.svg" alt="">
+      <div class="vegas-sign-name">{{ site.name | uppercase }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="cards-section" id="about">
+  <div class="section-heading"><h2>the short version</h2><p>A little about what I do, what I know, and what I keep coming back to.</p></div>
+  <div class="about-grid">
+    <article class="feature-card"><h3>accomplishments</h3><p>Projects, awards, launches, research, internships, and the work I am most proud to have shipped.</p><div class="mini-line"></div><span>things I built →</span></article>
+    <article class="feature-card offset"><h3>professional competencies</h3><p>TypeScript, systems thinking, technical writing, product sense, debugging, collaboration, leadership.</p><div class="skill-cloud"><span>build</span><span>debug</span><span>write</span><span>ship</span><span>listen</span></div></article>
+    <article class="feature-card"><h3>personal interests</h3><p>Novels, strange cinema, desert maps, long walks, tiny tools, bad coffee, good typography.</p><div class="interest-line">books / films / places / questions</div></article>
+  </div>
+</section>
+
+<section class="work-section" id="work">
+  <div class="section-heading"><h2>selected work</h2><p>Projects get the full-page treatment. Click into the mess.</p></div>
+  <div class="project-grid">
+    <a class="project-card" *ngFor="let project of projects" [routerLink]="['/projects', project.slug]">
+      <div class="project-top"><span>{{ project.year }}</span><span>{{ project.type }}</span></div>
+      <div class="project-art"><img [src]="project.art" [alt]="project.title + ' illustration'" loading="lazy"></div>
+      <div class="project-body"><h3>{{ project.title }}</h3><p>{{ project.summary }}</p><div class="tags"><span *ngFor="let tech of project.tech">{{ tech }}</span></div></div><span class="arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="writing-section" id="writing">
+  <div class="section-heading"><h2>notes from the road</h2><p>Writing lives here. The site should feel as comfortable reading as browsing.</p></div>
+  <div class="writing-list">
+    <a class="writing-row" *ngFor="let post of writing" [routerLink]="['/writing', post.slug]">
+      <div class="writing-meta"><span>{{ post.date }}</span><span>{{ post.kind }}</span></div><div class="writing-title"><h3>{{ post.title }}</h3><p>{{ post.excerpt }}</p></div><div class="writing-length">{{ post.length }} <span>↗</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-panel">
+    <div><span class="kicker">CONTACT</span><h2>Let's make something<br><em>worth looking at.</em></h2></div>
+    <div class="contact-copy"><p>Email me at <strong>{{ site.email }}</strong> for work, collaboration, or a good reason to make something together.</p><div class="contact-links"><a [href]="'mailto:' + site.email">email ↗</a><a [href]="site.github" target="_blank" rel="noreferrer">github ↗</a><a [href]="site.linkedin" target="_blank" rel="noreferrer">linkedin ↗</a></div></div>
+  </div>
+</section>

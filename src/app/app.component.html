@@ -1,0 +1,89 @@
+<div
+  class="site-shell"
+  [class.night-mode]="visualNight()"
+>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="wordmark" [routerLink]="['/']" fragment="top" aria-label="conman.dev home">
+      conman<span>.dev</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a [routerLink]="['/']" fragment="work">work</a>
+      <a [routerLink]="['/']" fragment="writing">writing</a>
+      <a [routerLink]="['/']" fragment="about">about</a>
+      <a [routerLink]="['/']" fragment="contact">contact</a>
+    </nav>
+
+    <button
+      class="mode-switch"
+      type="button"
+      [disabled]="modeTransition()"
+      [attr.aria-label]="nightMode() ? 'Switch to day mode' : 'Switch to night mode'"
+      (click)="toggleMode()"
+    >
+      <img
+        class="mode-switch-icon"
+        [src]="nightMode() ? 'assets/illustrations/moon-chaos.svg' : 'assets/illustrations/sun-chaos.svg'"
+        alt=""
+      >
+      <span>{{ nightMode() ? 'night' : 'day' }}</span>
+    </button>
+  </header>
+
+  <div
+    class="cosmic-corner"
+    aria-hidden="true"
+  >
+    <img class="cosmic-icon cosmic-icon-sun" src="assets/illustrations/sun-chaos.svg" alt="">
+    <img class="cosmic-icon cosmic-icon-moon" src="assets/illustrations/moon-chaos.svg" alt="">
+  </div>
+
+  <main><router-outlet /></main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="footer-brand" [routerLink]="['/']" fragment="top">
+        conman<span>.dev</span>
+      </a>
+
+      <div class="footer-quote">
+        “{{ site.footerQuote }}”
+        <a
+          class="hst-link"
+          href="https://en.wikipedia.org/wiki/Hunter_S._Thompson"
+          target="_blank"
+          rel="noreferrer"
+        >-HST</a>
+      </div>
+
+      <div class="footer-social">
+        <div class="footer-social-kicker">Check out what I'm checking out</div>
+        <div class="footer-links">
+          <a class="footer-link" [href]="site.goodreads" target="_blank" rel="noreferrer">
+            <svg class="social-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 4.5h8.5c2 0 3.5 1.4 3.5 3.4V19H9.5C7 19 5 17.6 5 15.4Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M17 7.5c0-1.9 1.4-3 3-3v14.1c0 .9-.7 1.6-1.6 1.6H9.4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 8h5.5M8 11h5.5M8 14h4" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>goodreads</span>
+          </a>
+
+          <a class="footer-link" [href]="site.letterboxd" target="_blank" rel="noreferrer">
+            <svg class="social-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="8" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="16" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <span>letterboxd</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ink-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </footer>
+</div>

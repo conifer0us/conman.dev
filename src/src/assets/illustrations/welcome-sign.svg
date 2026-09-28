@@ -1,0 +1,25 @@
+<svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#181512" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="500" cy="198" r="116" fill="#d88a29" fill-opacity=".08" stroke="#d88a29" stroke-width="1.5"/>
+    <path d="M500 62v-22 M500 334v-22 M364 198h-22 M636 198h22 M402 100l-15-15 M598 100l15-15 M402 296l-16 16 M598 296l16 16" stroke="#d88a29" stroke-width="2"/>
+    <path d="M492 294l-2 111 M541 291l6 114 M485 405h70" stroke-width="3"/>
+    <path d="M345 194 Q500 91 655 194 L500 324 Q345 253 345 194 Z" fill="#c6462b" fill-opacity=".15" stroke-width="3.2"/>
+    <path d="M358 194 Q500 108 642 194 L500 307 Q358 248 358 194 Z" stroke="#c6462b" stroke-width="2.2"/>
+    <path d="M374 192 Q500 119 626 192 M372 212 Q500 278 628 210" stroke="#d88a29" stroke-width="1.6"/>
+    <circle cx="374" cy="192" r="4" fill="#d88a29"/><circle cx="398" cy="179" r="4" fill="#d88a29"/>
+    <circle cx="424" cy="166" r="4" fill="#d88a29"/><circle cx="451" cy="154" r="4" fill="#d88a29"/>
+    <circle cx="480" cy="145" r="4" fill="#d88a29"/><circle cx="510" cy="144" r="4" fill="#d88a29"/>
+    <circle cx="540" cy="149" r="4" fill="#d88a29"/><circle cx="568" cy="159" r="4" fill="#d88a29"/>
+    <circle cx="595" cy="174" r="4" fill="#d88a29"/><circle cx="619" cy="189" r="4" fill="#d88a29"/>
+    <circle cx="383" cy="222" r="4" fill="#d88a29"/><circle cx="408" cy="233" r="4" fill="#d88a29"/>
+    <circle cx="435" cy="244" r="4" fill="#d88a29"/><circle cx="465" cy="253" r="4" fill="#d88a29"/>
+    <circle cx="496" cy="258" r="4" fill="#d88a29"/><circle cx="527" cy="255" r="4" fill="#d88a29"/>
+    <circle cx="557" cy="248" r="4" fill="#d88a29"/><circle cx="585" cy="236" r="4" fill="#d88a29"/>
+    <circle cx="609" cy="223" r="4" fill="#d88a29"/>
+    <path d="M36 390 C125 355 181 381 245 394 S368 417 438 397 S561 365 646 390" stroke-width="2.2"/>
+    <path d="M68 415 Q180 386 298 408 T617 406" stroke-width="1.1" opacity=".6"/>
+    <path d="M98 117l17-11m-8 19 24-3m94 219-12 16m22-11 14 15m331-167 17 5m-9 6 17 10m-24 75 10-12m2 13 12-2m-401 10-8-14m-9 18-13 5" stroke="#c6462b" stroke-width="2" opacity=".74"/>
+    <path d="M133 384v-52q0-12 10-12t10 12v15h9q8 0 8-8v-9m-37 23h-8q-7 0-7-8v-12" stroke-width="2.6"/>
+    <path d="M591 381v-44q0-11 9-11t9 11v13h8q7 0 7-7v-8" stroke-width="2.6"/>
+  </g>
+</svg>

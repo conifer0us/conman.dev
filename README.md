@@ -1,40 +1,33 @@
 # conman.dev
 
-Personal portfolio, project archive, and writing site for conman.dev.
+Angular portfolio + writing site.
 
-## Design direction
-
-A restrained desert-road visual system: paper, graphite, faded signage, imperfect geometry, and small hand-drawn SVG marks. The day/night toggle is tied to the local clock by default and can be overridden by the visitor; the preference persists in local storage.
-
-The visual language borrows broad editorial and countercultural cues from desert road ephemera, sketchbooks, old Vegas signage, and expressive ink-on-paper artwork without copying any single artist's work.
-
-## Customize your copy
-
-The main content is in `src/app/data.ts`.
-
-- `projects` controls project cards and project-detail pages.
-- `writing` controls writing cards and long-form article pages.
-- `src/app/pages/home.component.html` contains your intro, accomplishments, competencies, interests, and contact copy.
-- Replace the sample social/contact URLs in `src/app/pages/home.component.html` and `src/app/app.component.ts`.
-
-## Run locally
+## Run
 
 ```bash
 npm install
 npm start
 ```
 
-Then open `http://localhost:4200/`.
+Build with `npm run build`.
 
-## Build
+## Edit content
 
-```bash
-npm run build
-```
+Most copy lives in `src/app/data.ts`.
 
-## GitHub
+- `projects` = project cards + detail pages
+- `writing` = stories/essays + detail pages
+- `site` = name, contact links, social links, footer quote
+- `home.component.html` = homepage section copy
 
-The repository is already initialized with Git and has local commits. Add your GitHub remote and push `main` when repository access is available.
+Add a project or story by copying the matching object shape in `CONTENT-GUIDE.md`.
+
+## Artwork
+
+Site SVGs live in `src/assets/illustrations/`.
+Project screenshots can live in `src/assets/projects/` and are referenced from `data.ts`.
+
+## Push
 
 ```bash
 git remote add origin git@github.com:YOUR-USERNAME/conman.dev.git

@@ -1,14 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { projects, writing, site } from '../data';
+import { projects, site, writing } from '../data';
 
 @Component({
-  selector: 'app-home', standalone: true, imports: [CommonModule, RouterLink],
+  selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  projects = projects;
-  writing = writing;
-  site = site;
+  protected readonly projects = projects;
+  protected readonly site = site;
+  protected readonly writing = writing;
 }
